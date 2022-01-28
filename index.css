@@ -1,0 +1,18 @@
+body {
+    background-image: url('background.jpg');
+    background-repeat: repeat;
+}
+
+html,body{
+    overflow-x:hidden;
+}
+
+#search-label {
+    font-size: 1.2rem;
+}
+
+@media screen and (max-width: 1080px) {
+    #search-label {
+        font-size: 17px;
+    }
+  }
