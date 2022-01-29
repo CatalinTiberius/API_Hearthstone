@@ -69,19 +69,55 @@ window.onload = function() {
                         if (card.img && card.type.toLowerCase() != "hero"){
                             if (!duplicates.includes(card.name)){
                                 duplicates = [];
+
+                                // flip-container
+                                const flipCardContainer = document.createElement("div");
+                                flipCardContainer.classList.add("flip-card-container");
+
+                                // flip-card
+                                const flipCard = document.createElement("div");
+                                flipCard.classList.add("flip-card");
+
+                                flipCardContainer.appendChild(flipCard);
+
+                                // flip-card-front
+                                const flipFront = document.createElement("div");
+                                flipFront.classList.add("flip-card-front");
+                                flipCard.appendChild(flipFront);
+
+                                // flip-card-back
+                                const flipBack = document.createElement("div");
+                                flipBack.classList.add("flip-card-back");
+                                flipCard.appendChild(flipBack);
+
+                                // front image
                                 const image = document.createElement("img");
                                 image.src = card.img;
-                                image.height = 300;
                                 image.id = card.cardId;
 
                                 // Get a random card back
-                                backs_data.then(card_backs => {
+                                card_back = backs_data.then(card_backs => {
                                     var card_back = card_backs[Math.floor(Math.random() * card_backs.length)]
-                                    
+                                    const back_image = document.createElement("img");
+                                    back_image.src = (card_back.img) ? card_back.img : "https://d15f34w2p8l1cc.cloudfront.net/hearthstone/d4bc6338a669a5a417931c4537753a98cb584effab34a499bbd9c76cafc012c7.png";
+                                    back_image.id = card_back.cardBackId;
+                                    flipBack.appendChild(back_image);
                                  })
+                                 
+                                 flipFront.appendChild(image);
 
-                                container.appendChild(image);
+                                // Add eventListener to every card to go on details page on click
+                                flipCardContainer.id = card.cardId;
+                                flipCardContainer.addEventListener("click", function(event) {
+                                    console.log("click");
+                                    sessionStorage.setItem('cardId', flipCardContainer.id);
+                                    location.href =  "/cardDetails.html";
+                                })
+
+                                container.appendChild(flipCardContainer);
+                                
                                 duplicates.push(card.name);
+
                             }
                         }
                     })
@@ -111,11 +147,53 @@ window.onload = function() {
                         if (card.img && card.type.toLowerCase() != "hero"){
                             if (!duplicates.includes(card.name)){
                                 duplicates = [];
+
+                                // flip-container
+                                const flipCardContainer = document.createElement("div");
+                                flipCardContainer.classList.add("flip-card-container");
+
+                                // flip-card
+                                const flipCard = document.createElement("div");
+                                flipCard.classList.add("flip-card");
+
+                                flipCardContainer.appendChild(flipCard);
+
+                                // flip-card-front
+                                const flipFront = document.createElement("div");
+                                flipFront.classList.add("flip-card-front");
+                                flipCard.appendChild(flipFront);
+
+                                // flip-card-back
+                                const flipBack = document.createElement("div");
+                                flipBack.classList.add("flip-card-back");
+                                flipCard.appendChild(flipBack);
+
+                                // front image
                                 const image = document.createElement("img");
                                 image.src = card.img;
-                                image.height = 300;
                                 image.id = card.cardId;
-                                container.appendChild(image);
+
+                                // Get a random card back
+                                card_back = backs_data.then(card_backs => {
+                                    var card_back = card_backs[Math.floor(Math.random() * card_backs.length)]
+                                    const back_image = document.createElement("img");
+                                    back_image.src = (card_back.img) ? card_back.img : "https://d15f34w2p8l1cc.cloudfront.net/hearthstone/d4bc6338a669a5a417931c4537753a98cb584effab34a499bbd9c76cafc012c7.png";
+                                    back_image.id = card_back.cardBackId;
+                                    flipBack.appendChild(back_image);
+                                 })
+                                 
+                                 flipFront.appendChild(image);
+
+                                 // Add eventListener to every card to go on details page on click
+                                flipCardContainer.id = card.cardId;
+                                flipCardContainer.addEventListener("click", function(event) {
+                                    console.log("click");
+                                    sessionStorage.setItem('cardId', flipCardContainer.id);
+                                    location.href =  "/cardDetails.html";
+                                })
+
+                                container.appendChild(flipCardContainer);
+                                
                                 duplicates.push(card.name);
                             }
                         }
@@ -141,16 +219,57 @@ window.onload = function() {
                     return response.json();
                 })
                 .then(list => {
-                    console.log(list);
+                    //console.log(list);
                     list.forEach(card => {
                         if (card.img && card.type.toLowerCase() != "hero"){
                             if (!duplicates.includes(card.name)){
                                 duplicates = [];
+
+                                // flip-container
+                                const flipCardContainer = document.createElement("div");
+                                flipCardContainer.classList.add("flip-card-container");
+
+                                // flip-card
+                                const flipCard = document.createElement("div");
+                                flipCard.classList.add("flip-card");
+
+                                flipCardContainer.appendChild(flipCard);
+
+                                // flip-card-front
+                                const flipFront = document.createElement("div");
+                                flipFront.classList.add("flip-card-front");
+                                flipCard.appendChild(flipFront);
+
+                                // flip-card-back
+                                const flipBack = document.createElement("div");
+                                flipBack.classList.add("flip-card-back");
+                                flipCard.appendChild(flipBack);
+
+                                // front image
                                 const image = document.createElement("img");
                                 image.src = card.img;
-                                image.height = 300;
                                 image.id = card.cardId;
-                                container.appendChild(image);
+
+                                // Get a random card back
+                                card_back = backs_data.then(card_backs => {
+                                    var card_back = card_backs[Math.floor(Math.random() * card_backs.length)]
+                                    const back_image = document.createElement("img");
+                                    back_image.src = (card_back.img) ? card_back.img : "https://d15f34w2p8l1cc.cloudfront.net/hearthstone/d4bc6338a669a5a417931c4537753a98cb584effab34a499bbd9c76cafc012c7.png";
+                                    back_image.id = card_back.cardBackId;
+                                    flipBack.appendChild(back_image);
+                                 })
+                                 
+                                 flipFront.appendChild(image);
+
+                                 // Add eventListener to every card to go on details page on click
+                                flipCardContainer.id = card.cardId;
+                                flipCardContainer.addEventListener("click", function(event) {
+                                    sessionStorage.setItem('cardId', flipCardContainer.id);
+                                    location.href =  "cardDetails.html";
+                                })
+
+                                container.appendChild(flipCardContainer);
+                                
                                 duplicates.push(card.name);
                             }
                         }
