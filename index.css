@@ -11,6 +11,10 @@ html,body{
     font-size: 1.2rem;
 }
 
+#image-container {
+    width: 90vw;
+}
+
 @media screen and (max-width: 1080px) {
     #search-label {
         font-size: 17px;
